@@ -1,49 +1,87 @@
 <template>
     <div class="news">
-        <Scroll :data="list" class="news-content">
+        <Scroll :data="list" class="news-content" :isPullUp="pullUp" @scrollToEnd="loadMore">
             <ul class="news-list">
-                <li>
+                <li v-for="(it,index) in list">
                     <div class="left">
-                        <img src="" height="120" width="120" alt="" />
+                        <img :src="it.images.large" height="120" width="120" alt="" />
                     </div>
                     <div class="right">
                         <div class="box">
-                            <h3>88908890889088908890889088908890</h3>
-                            <p>导演：后打开</p>
-                            <p>主演：后打开</p>
-                            <p>类型：后打开</p>
-                            <p>年份：2017</p>
+                            <h3>{{it.title}}</h3>
+                            <p>导演：<span v-for="(dir,index) in it.directors">{{dir.name}} <i v-if="index == it.directors.length - 1">、</i></span></p>
+                            <p>主演：<span v-for="(names,index) in it.casts">{{names.name}} <i v-if="index == it.casts.length - 1">、</i></span></p>
+                            <p>类型：{{it.genres.toString()}}</p>
+                            <p>年份：{{it.year}}</p>
                         </div>
                     </div>
                 </li>
+                <div class="loaing-wrapper">
+                    <Loading  v-if="isLoad"></Loading>
+                    <p v-if="!isLoad">无更多数据！</p>
+                </div>
             </ul>
-            <div class="loaing-wrapper">
-
-            </div>
         </Scroll>
     </div>
 </template>
 <script type="text/javascript">
     import {getTop250} from 'api/getMovies'
     import Scroll from 'base/scroll/scroll'
-
+    import Loading from 'base/loading/loading'
+    import {mapGetters} from 'vuex'
+    const COUNT = 18;
      export default{
         components:{
-            Scroll
+            Scroll,
+            Loading
+        },
+        computed:{
+            ...mapGetters(['getFooter'])
         },
         data(){
             return {
-                list:[1,2,3]
+                list:[],
+                pullUp:true,
+                isLoad:false,
+                page:0
             }
         },
         mounted (){
-            //this.fetchData();
+            //console.log(this.getFooter);
+            this.fetchData();
         },
         methods:{
             fetchData(){
-                getTop250(0,15).then((res)=>{
-                    console.log(res);
+                this.isLoad = true;
+                getTop250(this.page*COUNT,COUNT).then((res)=>{
+                    if(res.subjects.length == 0){
+                        this.isLoad = false;
+                        return;
+                    }
+                    this.list = res.subjects;
+                    //console.log(res.subjects);
                 });
+            },
+            loadMore(){
+                //console.log('滚动到底部了');
+
+                if(!this.isLoad){
+                    return;
+                }
+                this.page++;
+
+                this.isLoad = true;
+                getTop250(this.page*COUNT,COUNT).then((res)=>{
+                    if(res.subjects.length == 0){
+                        this.isLoad = false;
+                        return;
+                    }
+
+                    this.list = this.list.concat(res.subjects);
+                    //console.log(res.subjects);
+                });
+
+
             }
         }
      }
@@ -60,6 +98,14 @@
             overflow: hidden;
         }
         .news-list{
+            .loaing-wrapper{
+                p{
+                    text-align center;
+                    font-size:14px;
+                    color:#333;
+                    line-height:49px;
+                }
+            }
             li{
                 display: flex;
                 border-bottom: 1px solid #000;

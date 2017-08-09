@@ -10,6 +10,10 @@
             data:{
                 type:Array,
                 default:[]
+            },
+            isPullUp:{
+                type:Boolean,
+                default:false
             }
         },
         mounted(){
@@ -25,6 +29,20 @@
                     click:true,
                     probeType:3
                 });
+
+                //是否监听滚动到底部
+                if(this.isPullUp){
+                    this.scroll.on('scrollEnd',(pos)=>{
+                        let maxY = this.scroll.maxScrollY; //固定的值
+                        let posY = pos.y; //滚动距离，越来越大
+                        if(posY < maxY + 25){
+                            //console.log('滚动到底部了');
+                            this.$emit('scrollToEnd');
+                        }
+                        //console.log('最大的滚动距离：'+maxY);
+                        //console.log('当前的滚动值：'+posY);
+                    });
+                }
             },
             refresh(){
                 this.scroll && this.scroll.refresh();
