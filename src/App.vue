@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <keep-alive><router-view @hasLoad="hasLoad"></router-view></keep-alive>
     <FooterView></FooterView>
   </div>
 </template>
@@ -11,6 +11,11 @@ export default {
   name: 'app',
   components:{
     FooterView
+  },
+  methods:{
+    hasLoad(){
+        console.log(123);
+    }
   }
 }
 </script>
