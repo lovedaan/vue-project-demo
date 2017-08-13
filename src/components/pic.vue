@@ -1,7 +1,5 @@
 <template>
     <div class="pic">
-        <h3>我是图片</h3>
-        <Stars :stars="num" :average="average"></Stars>
     </div>
 </template>
 <script type="text/javascript">
@@ -12,8 +10,6 @@
         },
         data(){
             return {
-                num:'30',
-                average:'7.6'
             }
         }
      }

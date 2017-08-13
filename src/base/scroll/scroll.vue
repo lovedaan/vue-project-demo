@@ -45,6 +45,7 @@
                 }
             },
             refresh(){
+                //console.log(123);
                 this.scroll && this.scroll.refresh();
             }
         },

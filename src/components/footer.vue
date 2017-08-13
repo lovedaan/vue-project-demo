@@ -1,9 +1,9 @@
 <template>
     <div class="footer">
         <ul class="footer-list">
-            <router-link to="home" tag="li" class="cur">主页</router-link>
-            <router-link to="pic" tag="li">图片</router-link>
-            <router-link to="news" tag="li">新闻</router-link>
+            <router-link to="home" tag="li" class="cur">热映</router-link>
+            <router-link to="pic" tag="li">排行</router-link>
+            <router-link to="news" tag="li">我的</router-link>
         </ul>
     </div>
 </template>
@@ -15,6 +15,7 @@
         height: 50px;
         bottom: 0;
         border-top: 1px solid #000;
+        z-index:10;
         .footer-list{
             display: flex;
             li{
