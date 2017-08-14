@@ -121,12 +121,10 @@
             }
         },
         watch:{
-            title(){
-                //console.log(this.title);
-            },
             $route(to,from){
                 if(to.query.type && to.query.type != this.title){
                     this.list = [];
+                    this.page = 0;
                     this.title = to.query.type;
                     switch(this.title){
                         case '正在热映':

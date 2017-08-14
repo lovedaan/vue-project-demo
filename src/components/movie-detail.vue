@@ -81,7 +81,20 @@
                     this.objData =res;
                     this.objData.genres = this.objData.genres.toString();
                     let filmsList = res.casts;
+                    let filmsDirList = res.directors;
                     let ret = [];
+
+                    for(let i = 0; i<filmsDirList.length;i++){
+                        if(filmsDirList[i].avatars){
+                           ret.push({
+                                images:{
+                                    small:filmsDirList[i].avatars.large
+                                },
+                                title:'导演：'+filmsDirList[i].name
+                           });
+                        }
+                    }
+
                     for(let i = 0; i<filmsList.length;i++){
                         if(filmsList[i].avatars){
                             ret.push({
@@ -92,6 +105,7 @@
                             });
                         }
                     }
+
                     this.films = ret;
                     //console.log(JSON.stringify(ret));
                     //console.log(this.objData.images.large);

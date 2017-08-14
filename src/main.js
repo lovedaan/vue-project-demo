@@ -9,7 +9,7 @@ import 'common/stylus/index'
 
 Vue.use(VueLazyload);
 Vue.use(VueLazyload, {
-    loading: require('./common/images/loading.gif')
+    loading: require('./common/images/timg.gif')
 })
 
 Vue.config.productionTip = false
