@@ -19,7 +19,7 @@
                     </div>
                 </li>
                 <div class="loaing-wrapper">
-                    <Loading  v-if="isLoad"></Loading>
+                    <LoadingMore  v-if="isLoad"></LoadingMore>
                     <p v-else>无更多数据！</p>
                 </div>
             </ul>
@@ -28,13 +28,13 @@
 </template>
 <script type="text/javascript">
     import Scroll from 'base/scroll/scroll'
-    import Loading from 'base/loading/loading'
+    import LoadingMore from 'base/loading-more/loading-more'
     import {getMovieSearch} from 'api/getMovies'
     const COUNT = 18;
     export default {
         components:{
             Scroll,
-            Loading
+            LoadingMore
         },
         props:{
             query :{

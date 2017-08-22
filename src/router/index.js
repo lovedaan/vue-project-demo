@@ -1,13 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/components/home'
-import pic from '@/components/pic'
-import news from '@/components/news'
-import movieList from '@/components/movie-list'
-import movieDetail from '@/components/movie-detail'
-import search from '@/components/search'
-
-Vue.use(Router)
+const home = resolve => require(['@/components/home.vue'], resolve);
+const usBox = resolve => require(['@/components/us-box.vue'], resolve);
+const search = resolve => require(['@/components/search.vue'], resolve);
+const movieList = resolve => require(['@/components/movie-list.vue'], resolve);
+const movieDetail = resolve => require(['@/components/movie-detail.vue'], resolve);
+const me = resolve => require(['@/components/me.vue'], resolve);
+Vue.use(Router);
 
 export default new Router({
     routes: [{
@@ -17,11 +16,11 @@ export default new Router({
         path: '/home',
         component: home
     }, {
-        path: '/pic',
-        component: pic
+        path: '/usBox',
+        component: usBox
     }, {
-        path: '/news',
-        component: news
+        path: '/me',
+        component: me
     }, {
         path: '/movie-list',
         component: movieList

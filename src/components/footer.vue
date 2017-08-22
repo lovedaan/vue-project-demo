@@ -2,8 +2,8 @@
     <div class="footer">
         <ul class="footer-list">
             <router-link to="home" tag="li" class="cur">热映</router-link>
-            <router-link to="pic" tag="li">排行</router-link>
-            <router-link to="news" tag="li">我的</router-link>
+            <router-link to="usBox" tag="li">排行</router-link>
+            <router-link to="me" tag="li">我的</router-link>
         </ul>
     </div>
 </template>
@@ -25,6 +25,7 @@
                 line-height:50px;
                 font-size:14px;
                 border-right: 1px solid #ccc;
+                background:#fff;
                 &.router-link-active{
                     background:yellowgreen;
                     color:#fff;

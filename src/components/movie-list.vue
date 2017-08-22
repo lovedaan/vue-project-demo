@@ -27,12 +27,13 @@
                         </div>
                     </li>
                     <div class="loaing-wrapper">
-                        <Loading  v-if="isLoad"></Loading>
+                        <LoadingMore  v-if="isLoad"></LoadingMore>
                         <p v-else>无更多数据！</p>
                     </div>
                 </ul>
             </Scroll>
         </div>
+        <Loading v-show="!list.length"></Loading>
     </div>
 </template>
 <script type="text/javascript">
@@ -40,13 +41,15 @@
     import Scroll from 'base/scroll/scroll'
     import Score from 'base/score/score'
     import Loading from 'base/loading/loading'
+    import LoadingMore from 'base/loading-more/loading-more'
     import {mapMutations} from 'vuex'
     const COUNT = 18;
      export default{
         components:{
             Scroll,
             Loading,
-            Score
+            Score,
+            LoadingMore
         },
         computed:{
         },

@@ -40,9 +40,7 @@
                 <scrollOri :isTitle="isTitle" title="正在热映" v-if="films.length" :data="films"></scrollOri>
             </div>
         </div>
-        <div class="loading-content" v-show="!images">
-              <Loading class="loading-wrap"></Loading>
-        </div>
+        <Loading v-show="!images"></Loading>
     </div>
 </template>
 <script type="text/javascript">
@@ -132,25 +130,17 @@
 <style lang="stylus">
     .movie-detail{
         height: 100%;
-        .loading-content{
-            position: fixed;
-            left: 0;
-            top:0;
-            width: 100%;
-            height: 100%;
-            z-index:10;
-            .loading-wrap{
-              position: absolute;
-              left:50%;
-              top:50%;
-              transform:translate(-50%,-50%);
-            }
-        }
+        padding-top:49px;
+        box-sizing:border-box;
         .header{
+            width: 100%;
             height: 49px;
+            left: 0;
+            top: 0;
             text-align: center;
-            position: relative;
+            position: fixed;
             background:#405F80;
+            z-index:40;
             color:#fff;
             .back{
                 position: absolute;
@@ -274,7 +264,8 @@
             }
         }
         .movie-film{
-            padding: 25px 20px 10px;
+            padding: 25px 20px 0px;
+            overflow: hidden;
             .film-title{
                 color:#999999;
                 margin-bottom:18px;

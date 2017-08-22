@@ -12,9 +12,7 @@
                   <scrollOri title="top250" v-if="allData.length" :data="allData[0].subjects"></scrollOri>
               </div>
           </Scroll>
-          <div class="loading-content" v-show="!allData.length">
-              <Loading class="loading-wrap"></Loading>
-          </div>
+          <Loading class="loading-wrap" v-show="!allData.length"></Loading>
       </div>
     </div>
 
@@ -71,6 +69,7 @@
       bottom: 50px;
       left: 0;
       right: 0;
+      z-index:50;
       .list-content{
         height:100%;
         overflow: hidden;
@@ -93,20 +92,6 @@
               border-bottom: 1px solid #000;
             }
           }
-        }
-      }
-      .loading-content{
-        position: fixed;
-        left: 0;
-        top:0;
-        width: 100%;
-        height: 100%;
-        z-index:10;
-        .loading-wrap{
-          position: absolute;
-          left:50%;
-          top:50%;
-          transform:translate(-50%,-50%);
         }
       }
     }

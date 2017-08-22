@@ -2,7 +2,7 @@
  * @Author: Marte
  * @Date:   2017-08-09 12:16:21
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-08-13 16:56:59
+ * @Last Modified time: 2017-08-22 22:02:48
  */
 
 'use strict';
@@ -31,5 +31,11 @@ export function getMovieSearch(start, count, q) {
         count,
         q
     };
+    return jsonp(url, data, {});
+}
+
+export function getMovieUsBox() {
+    const url = 'http://api.douban.com/v2/movie/us_box';
+    const data = {};
     return jsonp(url, data, {});
 }
