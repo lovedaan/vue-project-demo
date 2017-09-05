@@ -157,6 +157,7 @@
                         text-align: center;
                         img{
                             width: 100%;
+                            height: 40vw;
                         }
                         .name{
                             display:block;

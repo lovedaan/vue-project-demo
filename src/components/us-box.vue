@@ -94,6 +94,7 @@
                     margin-bottom:10px;
                     .usBox-bg{
                         width: 100%;
+                        height: 38vw;
                     }
                     p{
                         padding: 5px 0;
