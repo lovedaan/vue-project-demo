@@ -1,9 +1,9 @@
 <template>
     <div class="footer">
         <ul class="footer-list">
-            <router-link to="home" tag="li" class="cur">热映</router-link>
-            <router-link to="usBox" tag="li">排行</router-link>
-            <router-link to="me" tag="li">我的</router-link>
+            <router-link :to="{name:'home'}" tag="li">热映</router-link>
+            <router-link :to="{name:'usBox'}" tag="li">排行</router-link>
+            <router-link :to="{name:'me'}" tag="li">我的</router-link>
         </ul>
     </div>
 </template>

@@ -6,21 +6,26 @@ const search = resolve => require(['@/components/search.vue'], resolve);
 const movieList = resolve => require(['@/components/movie-list.vue'], resolve);
 const movieDetail = resolve => require(['@/components/movie-detail.vue'], resolve);
 const me = resolve => require(['@/components/me.vue'], resolve);
+const main = resolve => require(['@/components/main.vue'], resolve);
 Vue.use(Router);
 
 export default new Router({
     routes: [{
-        path: '*',
-        redirect: '/home'
-    }, {
-        path: '/home',
-        component: home
-    }, {
-        path: '/usBox',
-        component: usBox
-    }, {
-        path: '/me',
-        component: me
+        path: '/',
+        component: main,
+        children: [{
+            path: '/home',
+            name:'home',
+            component: home
+        }, {
+            path: '/usBox',
+            name:'usBox',
+            component: usBox
+        }, {
+            path: '/me',
+            name:'me',
+            component: me
+        }]
     }, {
         path: '/movie-list',
         component: movieList
