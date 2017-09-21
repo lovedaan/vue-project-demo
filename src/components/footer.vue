@@ -1,9 +1,9 @@
 <template>
     <div class="footer">
         <ul class="footer-list">
-            <router-link :to="{name:'home'}" tag="li">热映</router-link>
-            <router-link :to="{name:'usBox'}" tag="li">排行</router-link>
-            <router-link :to="{name:'me'}" tag="li">我的</router-link>
+            <router-link tag="li" :to="{name:'home'}"><a href="javascript:;">热映</a></router-link>
+            <router-link tag="li" :to="{name:'usBox'}"><a href="javascript:;">排行</a></router-link>
+            <router-link tag="li" :to="{name:'me'}"><a href="javascript:;">我的</a></router-link>
         </ul>
     </div>
 </template>
@@ -26,7 +26,7 @@
                 font-size:14px;
                 border-right: 1px solid #ccc;
                 background:#fff;
-                &.router-link-active{
+                &.active{
                     background:yellowgreen;
                     color:#fff;
                 }

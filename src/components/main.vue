@@ -13,7 +13,10 @@
     export default{
         components:{
             FooterView
-        }
+        },
+		mounted(){
+			this.$router.push('/home');
+		}
     }
 </script>
 <style type="text/css">

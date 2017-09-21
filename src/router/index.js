@@ -10,19 +10,21 @@ const main = resolve => require(['@/components/main.vue'], resolve);
 Vue.use(Router);
 
 export default new Router({
+	linkActiveClass: 'active',
     routes: [{
         path: '/',
+		name: 'Main',
         component: main,
         children: [{
-            path: '/home',
+            path: 'home',
             name:'home',
             component: home
         }, {
-            path: '/usBox',
+            path: 'usBox',
             name:'usBox',
             component: usBox
         }, {
-            path: '/me',
+            path: 'me',
             name:'me',
             component: me
         }]
